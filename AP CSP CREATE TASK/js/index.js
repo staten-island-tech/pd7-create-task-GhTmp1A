@@ -22,3 +22,9 @@ document.querySelector("#app").innerHTML = `
 
 setupCounter(document.querySelector("#counter"));
  */
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+console.log(getRandomInt(8));
