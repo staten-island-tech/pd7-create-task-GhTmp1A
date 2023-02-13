@@ -23,8 +23,21 @@ document.querySelector("#app").innerHTML = `
 setupCounter(document.querySelector("#counter"));
  */
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
+import { data } from "./array";
+
+function chance(min, max) {
+  min = Math.ceil(1);
+  max = Math.floor(8);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-console.log(getRandomInt(8));
+function test() {
+  let gumball = chance();
+  console.log(gumball);
+
+  data
+    .filter((gum) => gum.value === 5)
+    .forEach((gumi) => console.log(gumi.flavor));
+}
+
+test();
