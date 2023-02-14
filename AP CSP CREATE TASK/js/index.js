@@ -35,9 +35,20 @@ function test() {
   let gumball = chance();
   console.log(gumball);
 
-  data
-    .filter((gum) => gum.value === 5)
-    .forEach((gumi) => console.log(gumi.flavor));
+  function test2() {
+    data
+      .filter((gum) => gum.value == gumball)
+      .forEach((gumi) => console.log(gumi.flavor));
+  }
+
+  function test3() {
+    console.log("Flavor:");
+    data
+      .filter((gum) => gum.value == gumball)
+      .forEach((gumi) => console.log(gumi.rating));
+  }
+
+  test3();
 }
 
 test();
