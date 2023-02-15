@@ -96,3 +96,40 @@ button:focus-visible {
   }
 }
  */
+
+ 
+ html,
+ body,
+ *{
+     margin:0;
+     padding:0;
+     padding: 0%;
+     margin: 0%;
+     box-sizing: border-box;
+     font-size: 62.5%;
+     text-align: center;
+     font-family: 'Anton', sans-serif;
+     font-family: 'Finlandica', sans-serif;
+ }
+
+ .button{
+  text-align: center;
+  align-items: center;
+  font-size: 5rem;
+  color: red;
+ }
+
+ .header{
+  color: red;
+  font-size: 6rem;
+ }
+
+ #gumbol{
+  width: 300px;
+  margin: 1rem;
+  align-items: center;
+  padding: 2rem ;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+ }

@@ -1,4 +1,5 @@
-/* import "../css/style.css";
+import "../css/style.css";
+/*
 import javascriptLogo from "./javascript.svg";
 import { setupCounter } from "./counter.js";
 
@@ -25,6 +26,39 @@ setupCounter(document.querySelector("#counter"));
 
 import { data } from "./array";
 
+const DOMSelectors = {
+  display: document.getElementById("display"),
+  input: document.getElementById("input"),
+};
+
+DOMSelectors.input.addEventListener("click", function () {
+  function chance(min, max) {
+    min = Math.ceil(1);
+    max = Math.floor(8);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  function gChance() {
+    let gumball = chance();
+    console.log(gumball);
+
+    function gCompare() {
+      data
+        .filter((gum) => gum.value == gumball)
+        .forEach((gumi) => console.log(gumi.flavor));
+    }
+    function gResult() {
+      console.log("Flavor:");
+      gCompare();
+      data
+        .filter((gum) => gum.value == gumball)
+        .forEach((gumi) => console.log(gumi.rating));
+    }
+    gResult();
+  }
+  gChance();
+});
+
 function chance(min, max) {
   min = Math.ceil(1);
   max = Math.floor(8);
@@ -43,6 +77,7 @@ function test() {
 
   function test3() {
     console.log("Flavor:");
+    test2();
     data
       .filter((gum) => gum.value == gumball)
       .forEach((gumi) => console.log(gumi.rating));
