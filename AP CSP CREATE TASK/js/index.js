@@ -42,17 +42,20 @@ DOMSelectors.input.addEventListener("click", function () {
     let gumball = chance();
     console.log(gumball);
 
-    function gCompare() {
-      data
-        .filter((gum) => gum.value == gumball)
-        .forEach((gumi) => console.log(gumi.flavor));
-    }
+    data
+      .filter((gum) => gum.value == gumball)
+      .forEach((gumi) => console.log(gumi.flavor));
     function gResult() {
-      console.log("Flavor:");
-      gCompare();
       data
         .filter((gum) => gum.value == gumball)
-        .forEach((gumi) => console.log(gumi.rating));
+        .forEach((gumi) => {
+          console.log(gumi.rating);
+          if (gumi.rating >= 50) {
+            console.log("Acceptable");
+          } else {
+            console.log("no");
+          }
+        });
     }
     gResult();
   }
@@ -80,7 +83,16 @@ function test() {
     test2();
     data
       .filter((gum) => gum.value == gumball)
-      .forEach((gumi) => console.log(gumi.rating));
+      .forEach(
+        (gumi) =>
+          function () {
+            if (gumi.value >= 50) {
+              console.log("It is acceptable");
+            } else {
+              console.log("Unacceptable");
+            }
+          }
+      );
   }
 
   test3();
