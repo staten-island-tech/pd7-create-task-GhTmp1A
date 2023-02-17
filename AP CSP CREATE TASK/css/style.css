@@ -112,7 +112,7 @@ button:focus-visible {
      font-family: 'Finlandica', sans-serif;
  }
 
- .button{
+/*  .button{
   text-align: center;
   align-items: center;
   font-size: 5rem;
@@ -132,4 +132,8 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+ } */
+
+ #api-response {
+  font-size: 5rem;
  }

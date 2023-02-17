@@ -24,12 +24,9 @@ document.querySelector("#app").innerHTML = `
 setupCounter(document.querySelector("#counter"));
  */
 
-import { data } from "./array";
+/* import { data } from "./array";
 
-const DOMSelectors = {
-  display: document.getElementById("display"),
-  input: document.getElementById("input"),
-};
+
 
 DOMSelectors.input.addEventListener("click", function () {
   function chance(min, max) {
@@ -99,3 +96,43 @@ function test() {
 }
 
 test();
+ */
+
+const DOMSelectors = {
+  display: document.getElementById("display"),
+};
+
+const quotes = "https://api.goprogram.ai/inspiration";
+const dog = "https://random.dog/woof";
+
+async function getQuote(quotes) {
+  try {
+    const response = await fetch(quotes);
+    const data = await response.json();
+    document.getElementById("api-response").innerHTML = data.quote;
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+getQuote(quotes);
+
+async function getDog() {
+  try {
+    const response = await fetch(dog);
+    if (response.status < 200 || response.status > 299) {
+      console.log(response.status);
+    } else {
+      const data = await response.json();
+      console.log(data);
+      DOMSelectors.display.insertAdjacentHTML(
+        "afterbegin",
+        `<img alt = "A dog" src = "${data.url}">`
+      );
+    }
+  } catch (error) {
+    console.log(error);
+    console.log("Get outta here fix your code");
+  }
+}
+getDog();

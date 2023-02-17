@@ -1,4 +1,4 @@
-const data = [
+/* const data = [
   {
     flavor: "strawberry",
     rating: 30,
@@ -42,3 +42,4 @@ const data = [
 ];
 
 export { data };
+ */
