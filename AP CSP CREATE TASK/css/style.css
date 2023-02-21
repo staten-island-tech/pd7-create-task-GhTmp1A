@@ -137,3 +137,12 @@ button:focus-visible {
  #api-response {
   font-size: 5rem;
  }
+
+ .button{
+  border: solid red;
+  font-size: 5rem;
+ }
+
+ #dogImg{
+  width: 300px;
+ }
