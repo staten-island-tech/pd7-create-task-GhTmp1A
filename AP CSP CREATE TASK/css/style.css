@@ -134,7 +134,7 @@ button:focus-visible {
   justify-content: space-around;
  } */
 
- #api-response {
+ .quote, .counter {
   font-size: 5rem;
  }
 

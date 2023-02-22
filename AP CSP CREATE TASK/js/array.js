@@ -43,3 +43,10 @@
 
 export { data };
  */
+
+const data = [
+  fetch(`https://api.quotable.io/random`),
+  fetch(`https://random.dog/woof.json`),
+];
+
+export { data };
