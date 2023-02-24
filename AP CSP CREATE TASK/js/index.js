@@ -44,18 +44,24 @@ DOMSelectors.button.addEventListener("click", function () {
 const DOMSelectors = {
   display: document.getElementById("display"),
   button: document.getElementById("combination"),
+  reject: document.getElementById("reject"),
+  accept: document.getElementById("accept"),
+  counter: document.getElementById("counter"),
 };
 
 const quotes = "https://api.quotable.io/random";
 const dog = "https://random.dog/woof.json";
+const cat = "https://cataas.com/cat?json=true";
 
-async function get(quotes, dog) {
+async function get(quotes, dog, cat) {
   try {
     DOMSelectors.display.innerHTML = "";
     const response = await fetch(quotes);
     const response1 = await fetch(dog);
+    const response2 = await fetch(cat);
     const data = await response.json();
     const data1 = await response1.json();
+    const data2 = await response2.json();
     /*     document.getElementById("api-response").innerHTML = data.content; */
     DOMSelectors.display.insertAdjacentHTML(
       "afterbegin",
@@ -63,17 +69,48 @@ async function get(quotes, dog) {
 <div id = "test">
 <h1 id= "quoteHeader">${data.content}</h1>
 <img id = "dogImg" src = ${data1.url}>
+<img id = "catImg" src = https://cataas.com/${data2.url}>
 </div>
 `
     );
-    console.log(data, data1);
+    console.log(data, data1, data2);
   } catch (error) {
     console.log(error);
   }
 }
 
-DOMSelectors.button.addEventListener("click", function () {
-  get(quotes, dog);
+get(quotes, dog, cat);
+
+let i = 0;
+DOMSelectors.accept.addEventListener("click", function () {
+  get(quotes, dog, cat);
+  i++;
+  console.log(i);
+  DOMSelectors.counter.innerHTML = "";
+  DOMSelectors.counter.insertAdjacentHTML(
+    "afterbegin",
+    `<h2 class = "counterSize ">${i}</h2>`
+  );
+});
+
+DOMSelectors.reject.addEventListener("click", function () {
+  get(quotes, dog, cat);
+  if (i <= 0) {
+    DOMSelectors.counter.innerHTML = "";
+    let i = 0;
+    DOMSelectors.counter.insertAdjacentHTML(
+      "afterbegin",
+      `<h2 class = "counterSize ">${i}</h2>`
+    );
+  } else {
+    i--;
+    console.log(i);
+    DOMSelectors.counter.innerHTML = "";
+    DOMSelectors.counter.insertAdjacentHTML(
+      "afterbegin",
+      `<h2 class = "counterSize ">${i}</h2>`
+    );
+  }
 });
 /* async function get(dog) {
   try {

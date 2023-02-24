@@ -134,7 +134,7 @@ button:focus-visible {
   justify-content: space-around;
  } */
 
- .quote, .counter {
+ #quoteHeader, #header, .counterSize {
   font-size: 5rem;
  }
 
