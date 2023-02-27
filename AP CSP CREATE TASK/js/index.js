@@ -1,46 +1,6 @@
 import "../css/style.css";
 import { data } from "./array";
 
-// let array = data;
-
-// console.log(array);
-
-// Promise.all(data).then((res) => {
-//   Promise.all(
-//     res.map((item) => {
-//       return item.json();
-//     })
-//   ).then((data) => console.log(data));
-// });
-
-/* let array = data;
-
-async function test() {
-  try {
-    const response = await Promise.all(array);
-    const data = await Promise.all(
-      response.map((element) => {
-        return element.json();
-      })
-    );
-    DOMSelectors.display.insertAdjacentHTML(
-      "afterbegin",
-      `<div id = "output">
-    <h1 class="quote">${data[0].content}</h1>
-    <img id = "dogImg" src = "${data[1].url}">
-    </div>`
-    );
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-DOMSelectors.button.addEventListener("click", function () {
-  test();
-});
- */
-
 const DOMSelectors = {
   display: document.getElementById("display"),
   button: document.getElementById("combination"),
@@ -48,6 +8,7 @@ const DOMSelectors = {
   accept: document.getElementById("accept"),
   apiSwitch: document.getElementById("imageSwitch"),
   counter: document.getElementById("counter"),
+  historyDisplay: document.getElementById("historydisplay"),
 };
 
 DOMSelectors.apiSwitch.addEventListener("click", function () {
@@ -62,6 +23,7 @@ DOMSelectors.apiSwitch.addEventListener("click", function () {
   }
 }); // This function uses a button and click input by the user to change the class of the div in the html file where the output/result will be displayed. It detects whether or not this class is cat or dog, and if it is either cat or dog, then it switches it to the opposite name. Either way, the first result seen by the user will be an image of a cat, since everything is set up to be with a cat when the user first opens the web page. The user can then choose to run the code contuining to use the cat images exclusively, or to switch it to dog images, or back again.
 
+const history = [];
 const quotes = "https://api.quotable.io/random"; //quotes provided by the api.quoatable.io api. Github page: https://github.com/lukePeavey/quotable
 const dog = "https://random.dog/woof.json"; //images provided by the random.dog api.
 const cat = "https://cataas.com/cat?json=true"; //Images provided by the cats as a service rest api.
@@ -96,6 +58,9 @@ async function get(quotes, dog, cat) {
       <img id = "dogImg" src = ${data1.url}>
       </div>`
       ); //This code checks whether or not the div in where the results will be displayed contains anything but the "cat" class. If it does contain a different class other than "cat" (in this case dog, as predetermined by the apiSwitch button), then the function will insert a quote from the quote api regardless of this class change, however inserts a dog image and not a cat image.
+      history.push(`${data.content}, ${data1.url}`);
+      console.log(history);
+      console.log(history[0]);
     }
 
     console.log(data, data1, data2);
@@ -138,42 +103,3 @@ DOMSelectors.reject.addEventListener("click", function () {
     );
   }
 });
-
-/* async function get(dog) {
-  try {
-    const response = await fetch(dog);
-    const data = await response.json();
-    DOMSelectors.display.insertAdjacentHTML(
-      "afterbegin",
-
-      `
-      <div id = "dogDiv">
-      <img id = "dogImg" src = "${data.url}">
-      </div>
-      `
-    );
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-} */
-
-/* async function getDog() {
-  try {
-    const response = await fetch(dog);
-    if (response.status < 200 || response.status > 299) {
-      console.log(response.status);
-    } else {
-      const data = await response.json();
-      console.log(data);
-      DOMSelectors.display.insertAdjacentHTML(
-        "afterbegin",
-        `<img alt = "A dog" src = "${data.url}">`
-      );
-    }
-  } catch (error) {
-    console.log(error);
-    console.log("Get outta here fix your code");
-  }
-}
-getDog(); */
