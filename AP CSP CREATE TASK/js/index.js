@@ -1,5 +1,4 @@
 import "../css/style.css";
-import { data } from "./array";
 
 const DOMSelectors = {
   display: document.getElementById("display"),
@@ -58,8 +57,6 @@ async function get(quotes, dog, cat) {
       <img id = "dogImg" src = ${data1.url}>
       </div>`
       ); //This code checks whether or not the div in where the results will be displayed contains anything but the "cat" class. If it does contain a different class other than "cat" (in this case dog, as predetermined by the apiSwitch button), then the function will insert a quote from the quote api regardless of this class change, however inserts a dog image and not a cat image.
-      history.push(data, data1);
-      console.log(history);
     }
 
     console.log(data, data1, data2);
@@ -80,6 +77,8 @@ DOMSelectors.accept.addEventListener("click", function () {
     "afterbegin",
     `<h2 class = "counterSize ">${i}</h2>`
   ); //Inserts the new number that the counter now has into the page.
+  history.push({ quotes, dog, cat });
+  console.log(history);
 });
 
 DOMSelectors.reject.addEventListener("click", function () {
