@@ -34,9 +34,9 @@ async function get(quotes, dog, cat) {
     const response = await fetch(quotes);
     const response1 = await fetch(dog);
     const response2 = await fetch(cat);
-    const data = await response.json();
-    const data1 = await response1.json();
-    const data2 = await response2.json(); //functions fetches and retrieves all apis and returns usable json objects.
+    const data = await response.json(history);
+    const data1 = await response1.json(history);
+    const data2 = await response2.json(history); //functions fetches and retrieves all apis and returns usable json objects.
     /*     document.getElementById("api-response").innerHTML = data.content; */
 
     if (DOMSelectors.display.classList.contains("cat")) {
@@ -58,9 +58,8 @@ async function get(quotes, dog, cat) {
       <img id = "dogImg" src = ${data1.url}>
       </div>`
       ); //This code checks whether or not the div in where the results will be displayed contains anything but the "cat" class. If it does contain a different class other than "cat" (in this case dog, as predetermined by the apiSwitch button), then the function will insert a quote from the quote api regardless of this class change, however inserts a dog image and not a cat image.
-      history.push(`${data.content}, ${data1.url}`);
+      history.push(data, data1);
       console.log(history);
-      console.log(history[0]);
     }
 
     console.log(data, data1, data2);
