@@ -48,6 +48,10 @@ async function get(quotes, dog, cat) {
   </div>
   `
       ); //This code checks whether or not the div in where the results will be displayed contains the "cat" class. If it does, then the function will insert quote from the quote api regardless, however inserts a cat image and not a dog image.
+
+      history.push({ data, data2 });
+      console.log(history);
+      return history;
     } else {
       DOMSelectors.display.insertAdjacentHTML(
         "afterbegin",
@@ -67,6 +71,8 @@ async function get(quotes, dog, cat) {
 
 get(quotes, dog, cat); //This code will immediatly run upon the user loading the page. Because everything is set to "cat" by default, the user will automatically recieve an image of a cat.
 
+console.log(history);
+
 let i = 0; //Declares the used counter variable in global scope.
 DOMSelectors.accept.addEventListener("click", function () {
   get(quotes, dog, cat); //Gets the quote, with the option of dog or cat depending on the user's choice from the earlier apiSwitch button.
@@ -77,8 +83,17 @@ DOMSelectors.accept.addEventListener("click", function () {
     "afterbegin",
     `<h2 class = "counterSize ">${i}</h2>`
   ); //Inserts the new number that the counter now has into the page.
-  history.push({ quotes, dog, cat });
-  console.log(history);
+  /*   history.push({ quotes, dog, cat });
+  console.log(history); */
+  /*  DOMSelectors.historyDisplay.insertAdjacentHTML(
+    "afterbegin",
+    `
+  <div id = "outputHistory">
+  <h1 id= "quoteHeader">${data.content}</h1>
+  <img id = "catImg" src = https://cataas.com/${data2.url}>
+  </div>
+  `
+  ); */
 });
 
 DOMSelectors.reject.addEventListener("click", function () {
