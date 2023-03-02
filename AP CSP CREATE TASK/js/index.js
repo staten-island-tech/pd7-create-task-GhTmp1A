@@ -71,26 +71,36 @@ async function get(quotes, dog, cat) {
 
 get(quotes, dog, cat); //This code will immediatly run upon the user loading the page. Because everything is set to "cat" by default, the user will automatically recieve an image of a cat.
 
-console.log(history);
-
 let i = 0; //Declares the used counter variable in global scope.
 DOMSelectors.accept.addEventListener("click", function () {
   get(quotes, dog, cat); //Gets the quote, with the option of dog or cat depending on the user's choice from the earlier apiSwitch button.
+  console.log(history);
+  history.forEach((item) =>
+    DOMSelectors.historyDisplay.insertAdjacentHTML(
+      "afterbegin",
+      `  <h1 id= "quoteHeader">${item.data.content}</h1>
+  <img id = "catImg" src = https://cataas.com/${item.data2.url}>
+  </div>`
+    )
+  );
+  console.log(history);
   i++; //Adds the number "1" to the counter.
   console.log(i);
   DOMSelectors.counter.innerHTML = "";
   DOMSelectors.counter.insertAdjacentHTML(
     "afterbegin",
     `<h2 class = "counterSize ">${i}</h2>`
-  ); //Inserts the new number that the counter now has into the page.
+  );
+  //Inserts the new number that the counter now has into the page.
   /*   history.push({ quotes, dog, cat });
   console.log(history); */
-  /*  DOMSelectors.historyDisplay.insertAdjacentHTML(
+
+  /*   history.forEach(item) => DOMSelectors.historyDisplay.insertAdjacentHTML(
     "afterbegin",
     `
   <div id = "outputHistory">
-  <h1 id= "quoteHeader">${data.content}</h1>
-  <img id = "catImg" src = https://cataas.com/${data2.url}>
+  <h1 id= "quoteHeader">${element.data.content}</h1>
+  <img id = "catImg" src = https://cataas.com/${element.data2.url}>
   </div>
   `
   ); */
