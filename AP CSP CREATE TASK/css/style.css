@@ -139,10 +139,10 @@ button:focus-visible {
  }
 
  .button{
-  border: solid red;
+  border: solid black;
   font-size: 5rem;
  }
 
- #dogImg{
+ #dogImg, #catImg{
   width: 300px;
  }
